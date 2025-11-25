@@ -13,6 +13,8 @@
     "check": "prettier --write . && eslint --fix"
   },
   "dependencies": {
+    "@bryntum/schedulerpro": "^7.0.0-beta.1",
+    "@bryntum/schedulerpro-react": "^7.0.0-beta.1",
     "@faker-js/faker": "^10.0.0",
     "@tailwindcss/vite": "^4.0.6",
     "@tanstack/match-sorter-utils": "^8.19.4",
@@ -26,6 +28,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.544.0",
+    "mapbox-gl": "^3.16.0",
     "nitro": "latest",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",

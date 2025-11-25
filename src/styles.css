@@ -1,7 +1,7 @@
+@import 'https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css';
+
 @import 'tailwindcss';
-
 @import 'tw-animate-css';
-
 @custom-variant dark (&:is(.dark *));
 
 body {
@@ -136,3 +136,177 @@ code {
     @apply bg-background text-foreground;
   }
 }
+
+.demo-app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+#content {
+  display: flex;
+  flex-direction: row;
+  flex: 1 1 100%;
+
+  .b-resource-header {
+      height: 100%;
+  }
+
+  > .b-panel .b-toolbar {
+      height: 6em;
+      border-bottom: 1px solid var(--b-grid-header-border-color);
+
+      --b-toolbar-background: var(--b-grid-header-background);
+
+      .widget-title {
+          display: flex;
+          align-items: center;
+          font-size: 1.2em;
+      }
+  } 
+}
+
+/* Ensure Bryntum resource images are visible - hidden by Tailwind image baseline styles - https://tailwindcss.com/docs/preflight#images-are-block-level 
+Changing display: block back to display: inline-block so images work within the grid layout
+Removing the max-width: 100% constraint with max-width: none so images don't get squeezed
+The !important is needed because Tailwind's preflight applies to all img elements globally, so we need to override it specifically for Bryntum's grid cells.
+*/
+.b-grid-cell img,
+.b-resource-info img {
+  display: inline-block !important;
+  max-width: none !important;
+  vertical-align: middle;
+}
+
+.b-sch-event-wrap {
+  --b-sch-event-box-shadow: var(--b-elevation-1);
+
+  .b-sch-event-content {
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+  }
+
+  &.b-style-bordered {
+      --b-sch-event-background: var(--b-primary-50);
+      --b-sch-event-hover-background: var(--b-primary-45);
+      --b-sch-event-selected-background: var(--b-primary-40);
+  }
+}
+
+.b-sch-event-content {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.event-name {
+  font-size: 1.3em;
+}
+
+.location {
+  display: block;
+  margin-top: 0.3em;
+  font-weight: normal;
+}
+
+.fa-map-marker-alt {
+  margin-inline: 1px 0.4em; 
+}
+
+.address-results .b-list-item i {
+  font-size: 1.5em;
+  margin: 0 0.7em 0 0.2em;
+}
+
+.address-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.address-name {
+  flex: 1;
+  margin-bottom: 0.4em;
+  font-size: 1.1em;
+}
+
+.lat-long {
+  flex: 1;
+  color: #bbb;
+  font-size: 0.9em;
+}
+
+.mapboxgl-popup-anchor-top {
+  .mapboxgl-popup-tip {
+      border-bottom-color: var(--b-neutral-100);
+  }
+}
+
+.mapboxgl-popup-anchor-right {
+  .mapboxgl-popup-tip {
+      border-inline-start-color: var(--b-neutral-100);
+  }
+}
+
+.mapboxgl-popup-anchor-bottom {
+  .mapboxgl-popup-tip {
+      border-top-color: var(--b-neutral-100);
+  }
+}
+
+.mapboxgl-popup-anchor-left {
+  .mapboxgl-popup-tip {
+      border-inline-end-color: var(--b-neutral-100);
+  }
+}
+
+.mapboxgl-popup.mapboxgl-popup-anchor-top {
+  margin-top: -1.2em;
+}
+
+.mapboxgl-popup-content {
+  padding: 1em;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  background: var(--b-neutral-100);
+
+  transition: background 0.2s;
+}
+
+.mapboxgl-popup-close-button {
+  display: none;
+}
+
+.mapboxgl-popup .event-name {
+  display: block;
+  margin: 0 0 1.5em 0;
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+.mapboxgl-marker {
+  cursor: pointer;
+}
+
+.mapboxgl-canvas:focus {
+  outline: none !important;
+}
+
+.b-unplanned-grid {
+  border-top: 1px solid var(--b-splitter-color);
+
+  .unplannedReturnTrip {
+      .fa-car-side:before {
+          transform: rotateY(180deg);
+      }
+  }
+  t .unscheduledNameCell i {
+      margin-inline-end: 0.5em;
+  }
+}
+
+.b-drag-proxy .b-sch-event-wrap {
+  position: static;
+  opacity: 0.6;
+} 
